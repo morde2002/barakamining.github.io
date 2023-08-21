@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px; /* Adjust spacing between images */
+  }
+
+  .gallery-item {
+    flex: 33.33%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #load-more {
+    margin-top: 20px;
+    display: block;
+  }
+</style>
+</head>
+<body>
+<div class="gallery" id="gallery">
+  <!-- Initial images here -->
+</div>
+<button id="load-more">Load More</button>
+
+<script>
+const images = [
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  './assets/images/hero-icon.png',
+  // Add more image URLs here
+];
+
+const gallery = document.getElementById('gallery');
+const loadMoreButton = document.getElementById('load-more');
+let currentIndex = 0;
+
+function loadImages(startIndex, count) {
+  for (let i = startIndex; i < startIndex + count; i++) {
+    if (i >= images.length) {
+      loadMoreButton.style.display = 'none';
+      break;
+    }
+
+    const imageSrc = images[i];
+    const galleryItem = document.createElement('div');
+    galleryItem.className = 'gallery-item';
+    galleryItem.innerHTML = `<img src="${imageSrc}" alt="Image">`;
+    gallery.appendChild(galleryItem);
+  }
+  currentIndex += count;
+}
+
+loadMoreButton.addEventListener('click', () => {
+  loadImages(currentIndex, 3);
+});
+
+// Load initial images
+loadImages(currentIndex, 3);
+</script>
+</body>
+</html>
