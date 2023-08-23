@@ -66,11 +66,7 @@ include 'components/wishlist_cart.php';
     - #PRELOADER
   -->
 
-  <div class="preload" data-preaload>
-    <div class="circle"></div>
-    <p class="text">BARAKA MINING & MINERALS LTD</p>
-  </div>
-
+  
 
 
 
